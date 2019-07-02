@@ -5,4 +5,4 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 import '../../node_modules/rxjs/bundles/rxjs.umd.min.js';
-import './app/main.js';
+import './app/readmeRx.js';
