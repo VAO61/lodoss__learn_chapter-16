@@ -4,4 +4,5 @@ if (process.env.NODE_ENV !== 'production') {
   require('file-loader!../html/index.html');
 }
 
-import './api/main.js';
+import '../../node_modules/rxjs/bundles/rxjs.umd.min.js';
+// import './api/main.js';

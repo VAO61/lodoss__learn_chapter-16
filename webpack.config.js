@@ -16,8 +16,8 @@ module.exports = (env, ...argv) => {
     devtool: isProduction ? 'none' : 'inline-source-map',
     devServer: {
       hot: true,
-      inline: true
-      // open: true
+      inline: true,
+      open: true
       // contentBase: './src'
     },
     module: {
