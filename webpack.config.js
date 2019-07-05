@@ -6,8 +6,14 @@ module.exports = (env, ...argv) => {
   const isProduction = argv[0].mode === 'production';
 
   return {
+    // need abs path
+    resolve: {
+      modules: [path.resolve(__dirname, './src'), 'node_modules'],
+      extensions: ['.js']
+    },
     entry: {
-      index: './src/js/index.js'
+      index: './src/js/index.js',
+      fromevent: './src/js/about/entryRx_fromEvent.js'
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -17,8 +23,8 @@ module.exports = (env, ...argv) => {
     devServer: {
       hot: true,
       inline: true,
-      open: true
-      // contentBase: './src'
+      open: true,
+      contentBase: './src'
     },
     module: {
       rules: [
@@ -60,6 +66,11 @@ module.exports = (env, ...argv) => {
         filename: 'index.html',
         template: './src/html/index.html',
         chunks: ['index']
+      }),
+      new HtmlWebpackPlugin({
+        filename: 'from-event.html',
+        template: './src/html/about/from-event.html',
+        chunks: ['fromevent']
       })
     ]
   };

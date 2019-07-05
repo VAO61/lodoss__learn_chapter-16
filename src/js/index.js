@@ -6,3 +6,4 @@ if (process.env.NODE_ENV !== 'production') {
 
 import '../../node_modules/rxjs/bundles/rxjs.umd.min.js';
 import './about/readmeRx.js';
+// import './about/readmeRx_fromEvent';
