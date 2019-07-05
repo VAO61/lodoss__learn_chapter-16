@@ -1,8 +1,8 @@
+/**
+ * RxJS - библиотека, позволяющая применить подход реактивного программирования в JavaScript.
+ */
+
 import * as Rx from 'rxjs';
-// // import { Observable } from 'rxjs';
-// // // // console.log(Observable);
-// // import { Rx } from 'rxjs';
-// // // // console.log(Rx);
 
 // $ - маркер ассинхронности в окончании перемееной для разработчиков
 var stream$ = Rx.Observable.create(function(observer) {
@@ -23,6 +23,21 @@ var stream$ = Rx.Observable.create(function(observer) {
   }, 4000);
 
   /**
+   * Форсированный вызов ошибки
+   */
+  setTimeout(function() {
+    observer.error('Something went wrong!');
+  }, 1000);
+
+  /**
+   * observer.complete()
+   * Форсированное прекращение стрима. Стрим автоматически "убивает" всех слушателей, которые у него есть
+   */
+  setTimeout(() => {
+    observer.complete();
+  }, 3000);
+
+  /**
    * Вне зависимости от порядка написания порядок будет ассинхронным с указанной задержкой
    */
   setTimeout(function() {
@@ -36,6 +51,14 @@ var stream$ = Rx.Observable.create(function(observer) {
  * subscribe() - подписка на какие-то события
  * Метод, принимающий в качестве аргументов функцию callback, с помощью которого обрабатываются входящие данные
  */
-stream$.subscribe(function(data) {
-  console.log('Subscribe: ', data);
-});
+stream$.subscribe(
+  function(data) {
+    console.log('Subscribe: ', data);
+  },
+  function(error) {
+    console.log('Error: ', error);
+  },
+  function() {
+    console.log('Completed!');
+  }
+);
