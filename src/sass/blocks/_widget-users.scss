@@ -1,12 +1,13 @@
 ._bg {
   height: 483px; // -->> auto
-  background-image: url(/src/img/bg.jpg);
+  // background-image: url(/src/img/bg.jpg);
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: top 50%;
 }
+$module: widget-users;
 
-.widget-users {
+.#{$module} {
   width: 400px;
   top: 50%;
   left: 50%;
@@ -52,7 +53,7 @@
 
   &__control {
     display: flex;
-    transform: translateX(115px);
+    // transform: translateX(115px);
   }
 
   //
@@ -75,6 +76,24 @@
       }
     }
 
+    &_more {
+      width: 45px;
+      // height: 100%;
+      background-image: url(/src/img/right-arrow.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+      // transform: translateX(115px);
+
+      // &:hover + .#{$module}__btn_remove {
+      //   background-color: green;
+      // }
+
+      &:hover ~ .users-list {
+        background-color: green;
+      }
+    }
+
     &_remove {
       width: 115px;
       height: 100%;
@@ -84,16 +103,7 @@
       background-size: 40% 40%;
       background-position: center center;
       // transform: translateX(115px);
-    }
-
-    &_more {
-      width: 45px;
-      // height: 100%;
-      background-image: url(/src/img/right-arrow.svg);
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center center;
-      // transform: translateX(115px);
+      // posa + posa(parent) -> good, but not
     }
   }
 }

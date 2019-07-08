@@ -1,6 +1,7 @@
 .users-list {
   &__user {
     display: flex;
+    width: 515px;
     padding-left: 20px;
     border-bottom: solid 1px $color-text_lighter;
     // transform: translateX(-115px);
@@ -22,6 +23,8 @@
     padding-left: 20px;
     padding-right: 20px;
     flex-grow: 2;
+    justify-content: space-a;
+    // flex: 1 1 auto;
   }
 
   &__name {
