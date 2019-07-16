@@ -63,9 +63,9 @@ export const renderingUserWidget = user => {
   btnRemove.addEventListener('click', async () => {
     widgetUser.classList.toggle('users-list__user_remove', true);
     await timeout(600);
-    store.dispatch(removeUser(user.id));
-    const response = await apiGetUser(getRandomLogin());
-    store.dispatch(addUser(response));
+    // store.dispatch(removeUser(user.id));
+    // const response = await apiGetUser(getRandomLogin());
+    // store.dispatch(addUser(response));
   });
   controlContainer.appendChild(btnRemove);
 

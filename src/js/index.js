@@ -7,14 +7,14 @@ if (process.env.NODE_ENV !== 'production') {
   require('file-loader!../html/index.html');
 }
 
-store.subscribe(() => {
-  const state = store.getState();
-  const widgets = state.userDetailList.map(user => renderingUserWidget(user));
-  renderingUserList(widgets);
-});
+// store.subscribe(() => {
+//   const state = store.getState();
+//   const widgets = state.userDetailList.map(user => renderingUserWidget(user));
+//   renderingUserList(widgets);
+// });
 
 const refresh = async () => {
-  store.dispatch(clearUsers());
+  // store.dispatch(clearUsers());
   const requestes = [];
 
   for (let i = 0; i < 3; i++) {
@@ -23,12 +23,12 @@ const refresh = async () => {
 
   const users = await Promise.all(requestes);
   users.forEach(user => {
-    store.dispatch(addUser(user));
+    // store.dispatch(addUser(user));
   });
 };
 
 apiGetUserList().then(userList => {
-  store.dispatch(updateUserList(userList));
+  // store.dispatch(updateUserList(userList));
   refresh();
 });
-document.querySelector('#refresh').addEventListener('click', refresh);
+// document.querySelector('#refresh').addEventListener('click', refresh);
