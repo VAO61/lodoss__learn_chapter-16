@@ -1,13 +1,15 @@
 import { apiGetUser } from './api';
 import { getRandomLogin } from './utils';
 
-export const renderingUserWidget = user => {
+// export const renderingUserWidget = user => {
+export const renderingUserWidget = () => {
   const widgetUser = document.createElement('div');
   widgetUser.className = 'users-list__user';
 
   const img = document.createElement('img');
   img.className = 'users-list__avatar';
-  img.src = user.avatar_url;
+  // img.src = user.avatar_url;
+  img.src = 'https://picsum.photos/100/100?random=1?blur=2?grayscale';
   widgetUser.appendChild(img);
 
   const userDesc = document.createElement('div');
@@ -16,25 +18,29 @@ export const renderingUserWidget = user => {
 
   const userName = document.createElement('p');
   userName.className = 'users-list__name';
-  userName.innerHTML = user.name ? user.name : user.login;
+  // userName.innerHTML = user.name ? user.name : user.login;
+  userName.innerHTML = '111';
   userDesc.appendChild(userName);
 
-  if (user.location) {
-    const userLocation = document.createElement('p');
-    userLocation.className = 'users-list__location';
-    userLocation.innerHTML = user.location;
-    userDesc.appendChild(userLocation);
+  // if (user.location) {
+  const userLocation = document.createElement('p');
+  userLocation.className = 'users-list__location';
+  // userLocation.innerHTML = user.location;
+  userLocation.innerHTML = '222';
+  userDesc.appendChild(userLocation);
 
-    const iconLocation = document.createElement('i');
-    iconLocation.className =
-      'users-list__icon users-list__icon_location fas fa-map-marker-alt';
-    userLocation.appendChild(iconLocation);
-  }
+  const iconLocation = document.createElement('i');
+  iconLocation.className =
+    'users-list__icon users-list__icon_location fas fa-map-marker-alt';
+  userLocation.appendChild(iconLocation);
+  // }
 
   const userLink = document.createElement('a');
   userLink.className = 'link users-list__link';
-  userLink.href = user.html_url;
-  userLink.innerHTML = `@${user.login}`;
+  // userLink.href = user.html_url;
+  userLink.href = '#';
+  // userLink.innerHTML = `@${user.login}`;
+  userLink.innerHTML = `@some-login`;
   userDesc.appendChild(userLink);
 
   const controlContainer = document.createElement('div');
@@ -69,14 +75,17 @@ export const renderingUserWidget = user => {
   });
   controlContainer.appendChild(btnRemove);
 
+  const container = document.querySelector('.widget-users__users-list');
+  container.appendChild(widgetUser);
+
   return widgetUser;
 };
 
-export const renderingUserList = widgets => {
-  const container = document.querySelector('.widget-users__users-list');
-  container.innerHTML = '';
+// export const renderingUserList = widgets => {
+// const container = document.querySelector('.widget-users__users-list');
+// container.innerHTML = '';
 
-  widgets.forEach(widget => {
-    container.appendChild(widget);
-  });
-};
+// widgets.forEach(widget => {
+// container.appendChild(widgetUser);
+// });
+// };

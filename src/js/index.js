@@ -13,22 +13,26 @@ if (process.env.NODE_ENV !== 'production') {
 //   renderingUserList(widgets);
 // });
 
-const refresh = async () => {
-  // store.dispatch(clearUsers());
-  const requestes = [];
+// const refresh = async () => {
+//   // store.dispatch(clearUsers());
+//   const requestes = [];
 
-  for (let i = 0; i < 3; i++) {
-    requestes.push(apiGetUser(getRandomLogin()));
-  }
+//   for (let i = 0; i < 3; i++) {
+//     requestes.push(apiGetUser(getRandomLogin()));
+//   }
 
-  const users = await Promise.all(requestes);
-  users.forEach(user => {
-    // store.dispatch(addUser(user));
-  });
-};
+//   const users = await Promise.all(requestes);
+//   users.forEach(user => {
+//     // store.dispatch(addUser(user));
+//   });
+// };
 
-apiGetUserList().then(userList => {
-  // store.dispatch(updateUserList(userList));
-  refresh();
-});
+// apiGetUserList().then(userList => {
+//   // store.dispatch(updateUserList(userList));
+//   refresh();
+// });
+
+// renderingUserList();
+renderingUserWidget();
+// console.log(renderingUserWidget);
 // document.querySelector('#refresh').addEventListener('click', refresh);
