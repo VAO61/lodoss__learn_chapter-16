@@ -1,38 +1,21 @@
 import '../sass/style.scss';
-import { apiGetUser, apiGetUserList } from './app/api';
+import { apiGetUserList, getRandomLogin, apiGetUser } from './app/api';
 import { renderingUserWidget, renderingUserList } from './app/renderingUserDOM';
-import { getRandomLogin } from './app/utils';
+// import { getRandomLogin } from './app/utils';
 
 if (process.env.NODE_ENV !== 'production') {
   require('file-loader!../html/index.html');
 }
+// apiGetUserList();
+(async () => {
+  // await apiGetUserList();
+  console.log(await apiGetUserList()); // ok
+  // console.log(await apiGetUserList(getRandomLogin())); // not ok
+})();
 
-// store.subscribe(() => {
-//   const state = store.getState();
-//   const widgets = state.userDetailList.map(user => renderingUserWidget(user));
-//   renderingUserList(widgets);
-// });
+// apiGetUserList().then(getRandomLogin());
+apiGetUser();
 
-// const refresh = async () => {
-//   // store.dispatch(clearUsers());
-//   const requestes = [];
-
-//   for (let i = 0; i < 3; i++) {
-//     requestes.push(apiGetUser(getRandomLogin()));
-//   }
-
-//   const users = await Promise.all(requestes);
-//   users.forEach(user => {
-//     // store.dispatch(addUser(user));
-//   });
-// };
-
-// apiGetUserList().then(userList => {
-//   // store.dispatch(updateUserList(userList));
-//   refresh();
-// });
-
-// renderingUserList();
 renderingUserWidget();
 // console.log(renderingUserWidget);
 // document.querySelector('#refresh').addEventListener('click', refresh);
