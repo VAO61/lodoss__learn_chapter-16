@@ -7,10 +7,10 @@ module.exports = (env, ...argv) => {
 
   return {
     // need abs path
-    resolve: {
-      modules: [path.resolve(__dirname, './src'), 'node_modules'],
-      extensions: ['.js']
-    },
+    // resolve: {
+    //   modules: [path.resolve(__dirname, './src'), 'node_modules'],
+    //   extensions: ['.js']
+    // },
     entry: {
       index: './src/js/index.js',
       fromevent: './src/js/about/entryRx_fromEvent.js'
