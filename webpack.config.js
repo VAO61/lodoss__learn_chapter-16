@@ -13,7 +13,8 @@ module.exports = (env, ...argv) => {
     },
     entry: {
       index: './src/js/index.js',
-      fromevent: './src/js/about/entryRx_fromEvent.js'
+      fromevent: './src/js/about/entryRx_fromEvent.js',
+      operators: './src/js/about/entryRx_operators.js'
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -71,6 +72,11 @@ module.exports = (env, ...argv) => {
         filename: 'from-event.html',
         template: './src/html/about/from-event.html',
         chunks: ['fromevent']
+      }),
+      new HtmlWebpackPlugin({
+        filename: 'operators.html',
+        template: './src/html/about/operators.html',
+        chunks: ['operators']
       })
     ]
   };
