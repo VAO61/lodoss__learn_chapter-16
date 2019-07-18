@@ -1,6 +1,7 @@
-import '../sass/style.scss';
+import 'sass/style.scss';
 import { apiGetUserList, getRandomLogin, apiGetUser } from './app/api';
 import { renderingUserWidget, renderingUserList } from './app/renderingUserDOM';
+// Аналогично с 'js/app/api'. AbsPath работает --> ok
 // import { getRandomLogin } from './app/utils';
 
 if (process.env.NODE_ENV !== 'production') {
