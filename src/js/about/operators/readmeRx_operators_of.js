@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 //   () => console.log('Completed.')
 // );
 
-let someObj = {
+let someObject = {
   key1: 'value1',
   key2: 'value2'
 };
@@ -29,7 +29,7 @@ function createSubscribe(name) {
   };
 }
 
-Observable.of(5, 'some string', [1, 'one'], someObj).subscribe(
+Observable.of(5, 'some string', [1, 'one'], someObject).subscribe(
   // x => console.log('Next:  ', x),
   // err => console.log('Error: ', err),
   // () => console.log('Completed.')
