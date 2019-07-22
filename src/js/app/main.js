@@ -4,24 +4,23 @@ import { Observable } from 'rxjs';
 import { createSubscribe } from './utils';
 
 const userData$ = (async () => {
-  let loginList = await apiGetUserList();
-  let randomLogin = getRandomLogin(loginList);
-  let userData = await apiGetUser(randomLogin);
+  let userData = await getRandomLogin();
   console.log(userData);
 })();
 
-// // Observable.fromEvent(document.querySelector('#refresh'), 'click')
-// //   // .subscribe(createSubscribe(''));
-// //   // .subscribe(e => getUserData(3));
-// //   .subscribe(e => getUserData(3));
+Observable.fromEvent(document.querySelector('#refresh'), 'click')
+  // .subscribe(createSubscribe(''));
+  // .subscribe(e => getUserData(3));
+  .subscribe(e => getUserData(3));
 
-// const getUserData = count => {
-//   for (let i = 0; 1 < count; i++) {
-//     userData$.subscribe(data => userData(data.i));
-//   }
-// };
+const getUserData = count => {
+  // for (let i = 0; 1 < count; i++) {
+  // userData$.subscribe(data => userData(data.i));
+  console.log('click');
+  // }
+};
 
-// getUserData(3);
+getUserData(3);
 
 renderingUserWidget();
 
