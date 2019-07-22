@@ -7,7 +7,7 @@ export const apiGetUserList = async () => {
   // const randomIndex = Math.floor(Math.random() * responseUserList.data.length);
   // console.log(responseUserList.data[randomIndex].login); // ok
   // console.log(responseUserList.data[2].login); // ok
-  const loginList = [];
+  var loginList = [];
 
   responseUserList.data.forEach((item, index) => {
     // console.log(responseUserList.data[index].login); // ok
@@ -19,13 +19,9 @@ export const apiGetUserList = async () => {
   return loginList;
 };
 
-// TODO: передать ответ из apiGetUserList()
 export const getRandomLogin = dataList => {
   const randomIndex = Math.floor(Math.random() * dataList.length);
-  // console.log(responseUserList.data[randomIndex].login);
-
-  // console.log(dataList);
-  return userList[randomIndex].login;
+  return randomIndex;
 };
 
 export const apiGetUser = async login => {

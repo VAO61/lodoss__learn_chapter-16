@@ -7,3 +7,17 @@
 
 //   return userList[randomIndex].login;
 // };
+
+export const createSubscribe = name => {
+  return {
+    next(x) {
+      console.log(name, ': ', x);
+    },
+    error(err) {
+      console.log(name, ': ', x);
+    },
+    completed() {
+      console.log(name, ':  completed!');
+    }
+  };
+};
