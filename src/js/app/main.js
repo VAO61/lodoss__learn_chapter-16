@@ -1,27 +1,32 @@
-import { apiGetUserList, getRandomLogin, apiGetUser } from './api';
+import { getRandomUser } from './api';
 import { renderingUserWidget, renderingUserList } from './renderingUserDOM';
 import { Observable } from 'rxjs';
 import { createSubscribe } from './utils';
 
+let usersArray = [];
+
 const userData$ = (async () => {
-  let userData = await getRandomLogin();
-  console.log(userData);
+  // let array = [];
+  // let userData = await getRandomUser();
+  // array.push(userData);
+  // return array;
+  let userData = await getRandomUser();
+  return userData;
 })();
 
-Observable.fromEvent(document.querySelector('#refresh'), 'click')
-  // .subscribe(createSubscribe(''));
-  // .subscribe(e => getUserData(3));
-  .subscribe(e => getUserData(3));
+Observable.fromEvent(document.querySelector('#refresh'), 'click').subscribe(e =>
+  getUserData(3)
+);
 
 const getUserData = count => {
-  // for (let i = 0; 1 < count; i++) {
-  // userData$.subscribe(data => userData(data.i));
-  console.log('click');
-  // }
+  for (let i = 1; i <= count; i++) {
+    usersArray.push(userData$);
+  }
+  console.log(usersArray);
 };
 
 getUserData(3);
-
+// console.log(userData$);
 renderingUserWidget();
 
 /**
