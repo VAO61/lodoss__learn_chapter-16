@@ -29,6 +29,8 @@ getUserData(3);
 // console.log(userData$);
 renderingUserWidget();
 
+// Rx.Observable.fromPromise(axios.get('//jsonplaceholder.typicode.com/users'))
+
 /**
  * Observable.fromEvent(document.querySelector('#refresh'), 'click')
  * .debounceTime(2000) // не чаще, чем раз в 2 секунды чтобы не спамить апишке

@@ -5,5 +5,5 @@ export const getRandomUser = async () => {
   const randomLogin = Math.floor(Math.random() * data.length);
   const { login } = data[randomLogin];
   const responseUser = await axios.get(`https://api.github.com/users/${login}`);
-  return responseUser.data;
+  return responseUser;
 };
