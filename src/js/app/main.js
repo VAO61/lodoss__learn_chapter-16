@@ -1,33 +1,44 @@
 import { getRandomUser } from './api';
-import { renderingUserWidget, renderingUserList } from './renderingUserDOM';
+import { renderingUserList } from './renderingUserDOM';
 import { Observable } from 'rxjs';
 import { createSubscribe } from './utils';
 
-let usersArray = [];
+window.usersArray = [];
 
-const userData$ = (async () => {
+const userData$ = async () => {
   // let array = [];
   // let userData = await getRandomUser();
   // array.push(userData);
   // return array;
-  let userData = await getRandomUser();
-  return userData;
-})();
-
-Observable.fromEvent(document.querySelector('#refresh'), 'click').subscribe(e =>
-  getUserData(3)
-);
-
-const getUserData = count => {
-  for (let i = 1; i <= count; i++) {
-    usersArray.push(userData$);
-  }
-  console.log(usersArray);
+  let { data } = await getRandomUser();
+  return data;
 };
 
-getUserData(3);
+const render = async () => {
+  await getUserData(3);
+  renderingUserList(
+    usersArray,
+    document.querySelector('.widget-users__users-list.users-list')
+  );
+};
+
+Observable.fromEvent(document.querySelector('#refresh'), 'click').subscribe(e =>
+  render()
+);
+
+const getUserData = async count => {
+  const requests = new Array(count).fill(null).map(userData$);
+  usersArray = await Promise.all(requests);
+
+  // for (let i = 1; i <= count; i++) {
+  //   usersArray.push(userData$);
+  // }
+  // console.log(usersArray);
+};
+
+render();
 // console.log(userData$);
-renderingUserWidget();
+// renderingUserWidget();
 
 // Rx.Observable.fromPromise(axios.get('//jsonplaceholder.typicode.com/users'))
 

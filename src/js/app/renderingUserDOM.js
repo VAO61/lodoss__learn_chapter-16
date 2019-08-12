@@ -72,11 +72,13 @@ export const renderingUser = user => {
   return widgetUser;
 };
 
-export const renderingUserList = widgets => {
-  const container = document.querySelector('.widget-users__users-list');
+export const clearUserList = container => {
   container.innerHTML = '';
+};
 
-  widgets.forEach(widget => {
-    container.appendChild(widgetUser);
+export const renderingUserList = (users, container) => {
+  clearUserList(container);
+  users.forEach(user => {
+    container.appendChild(renderingUser(user));
   });
 };
