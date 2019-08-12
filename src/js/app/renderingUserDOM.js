@@ -3,36 +3,38 @@ import { showUser } from './main';
 
 export const renderingUser = (user, i) => {
   const widgetUser = document.createElement('div');
-  widgetUser.className = 'users-list__user';
+  widgetUser.className = 'user__container';
+
+  // const widgetUser = document.querySelectorAll(`.user-${i}`);
 
   const img = document.createElement('img');
-  img.className = 'users-list__avatar';
+  img.className = 'user__avatar';
   img.src = user.avatar_url;
   widgetUser.appendChild(img);
 
   const userDesc = document.createElement('div');
-  userDesc.className = 'users-list__desc';
+  userDesc.className = 'user__desc';
   widgetUser.appendChild(userDesc);
 
   const userName = document.createElement('p');
-  userName.className = 'users-list__name';
+  userName.className = 'user__name';
   userName.innerHTML = user.name ? user.name : user.login;
   userDesc.appendChild(userName);
 
   if (user.location) {
     const userLocation = document.createElement('p');
-    userLocation.className = 'users-list__location';
+    userLocation.className = 'user__location';
     userLocation.innerHTML = user.location;
     userDesc.appendChild(userLocation);
 
     const iconLocation = document.createElement('i');
     iconLocation.className =
-      'users-list__icon users-list__icon_location fas fa-map-marker-alt';
+      'user__icon user__icon_location fas fa-map-marker-alt';
     userLocation.appendChild(iconLocation);
   }
 
   const userLink = document.createElement('a');
-  userLink.className = 'link users-list__link';
+  userLink.className = 'link user__link';
   userLink.href = user.html_url;
   userLink.innerHTML = `@${user.login}`;
   userDesc.appendChild(userLink);
@@ -61,18 +63,16 @@ export const renderingUser = (user, i) => {
   }
 
   btnRemove.addEventListener('click', async () => {
-    const container = document.querySelector(
-      `.widget-users__users-list.users-list-${i}`
-    );
+    const container = document.querySelector(`.user-${i}`);
+    widgetUser.classList.toggle('users-list__user_remove', true);
+    await timeout(600);
     container.innerHTML = '';
     showUser(i);
-    // widgetUser.classList.toggle('users-list__user_remove', true);
-    // await timeout(600);
   });
   controlContainer.appendChild(btnRemove);
 
-  const container = document.querySelector('.widget-users__users-list');
-  container.appendChild(widgetUser);
+  // const container = document.querySelector('.widget-users__users-list');
+  // container.appendChild(widgetUser);
 
   return widgetUser;
 };
