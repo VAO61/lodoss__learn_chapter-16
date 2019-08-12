@@ -1,5 +1,7 @@
 .users-list {
   &__user {
+    min-height: 122px;
+
     &_active-event {
       transform: translateX(-115px);
     }
