@@ -1,34 +1,43 @@
 import { getRandomUser } from './api';
-import { renderingUserList } from './renderingUserDOM';
+import { clearUserList, renderingUser } from './renderingUserDOM';
 import { Observable } from 'rxjs';
-import { createSubscribe } from './utils';
+// import { createSubscribe } from './utils';
 
-window.usersArray = [];
+const container = document.querySelector(
+  '.widget-users__users-list.users-list'
+);
+// debugger;
+let usersArray = [];
 
-const userData$ = async () => {
-  // let array = [];
-  // let userData = await getRandomUser();
-  // array.push(userData);
-  // return array;
-  let { data } = await getRandomUser();
-  return data;
-};
+//  = Observable.create((observer) =>
 
-const render = async () => {
-  await getUserData(3);
-  renderingUserList(
-    usersArray,
-    document.querySelector('.widget-users__users-list.users-list')
-  );
-};
+const userData$ = Observable.create(observer => {
+  getRandomUser().then(({ data }) => {
+    observer.next(data);
+    observer.complete();
+  });
+});
+
+// const render = () => {
+//   getUserData(3);
+//   renderingUserList(
+//     usersArray,
+//     document.querySelector('.widget-users__users-list.users-list')
+//   );
+// };
 
 Observable.fromEvent(document.querySelector('#refresh'), 'click').subscribe(e =>
-  render()
+  getUserData(3)
 );
 
-const getUserData = async count => {
-  const requests = new Array(count).fill(null).map(userData$);
-  usersArray = await Promise.all(requests);
+const getUserData = count => {
+  clearUserList(container);
+  for (let i = 0; i < count; i++) {
+    userData$.subscribe(data => {
+      const userWidget = renderingUser(data);
+      container.appendChild(userWidget);
+    });
+  }
 
   // for (let i = 1; i <= count; i++) {
   //   usersArray.push(userData$);
@@ -36,7 +45,9 @@ const getUserData = async count => {
   // console.log(usersArray);
 };
 
-render();
+getUserData(3);
+
+// render();
 // console.log(userData$);
 // renderingUserWidget();
 

@@ -76,9 +76,10 @@ export const clearUserList = container => {
   container.innerHTML = '';
 };
 
-export const renderingUserList = (users, container) => {
-  clearUserList(container);
-  users.forEach(user => {
-    container.appendChild(renderingUser(user));
-  });
-};
+// export const renderingUser = (users, container) => {
+//   // clearUserList(container);
+//   // debugger;
+//   users.forEach(user => {
+//     container.appendChild(renderingUser(user));
+//   });
+// };
