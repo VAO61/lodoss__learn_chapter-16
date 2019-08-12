@@ -27,21 +27,19 @@ const userData$ = Observable.create(observer => {
 // };
 
 Observable.fromEvent(document.querySelector('#refresh'), 'click').subscribe(e =>
-  getUserData(3)
+  showUserList(3)
 );
 
 export const showUser = index => {
   userData$.subscribe(data => {
     const userWidget = renderingUser(data, index);
-    const container = document.querySelector(
-      `.widget-users__users-list.users-list-${index}`
-    );
+    const container = document.querySelector(`users-list__user-${index}`);
     container.appendChild(userWidget);
   });
 };
 
-const getUserData = count => {
-  clearContainers('.widget-users__users-list');
+const showUserList = count => {
+  clearContainers('user');
   for (let i = 0; i < count; i++) {
     showUser(i);
   }
@@ -52,7 +50,7 @@ const getUserData = count => {
   // console.log(usersArray);
 };
 
-getUserData(3);
+showUserList(3);
 
 // render();
 // console.log(userData$);

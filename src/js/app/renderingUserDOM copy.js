@@ -2,8 +2,10 @@
 import { showUser } from './main';
 
 export const renderingUser = (user, i) => {
-  const widgetUser = document.createElement('div');
-  widgetUser.className = 'users-list__user';
+  // const widgetUser = document.createElement('div');
+  // widgetUser.className = 'users-list__user';
+  // const widgetUser = document.querySelectorAll(`users-list__user-${i}`);
+  const widgetUser = document.querySelectorAll(`user`);
 
   const img = document.createElement('img');
   img.className = 'users-list__avatar';
@@ -61,10 +63,11 @@ export const renderingUser = (user, i) => {
   }
 
   btnRemove.addEventListener('click', async () => {
-    const container = document.querySelector(
-      `.widget-users__users-list.users-list-${i}`
-    );
-    container.innerHTML = '';
+    // const container = document.querySelector(
+    //   `.widget-users__users-list.users-list-${i}`
+    // );
+    // container.innerHTML = '';
+    widgetUser.innerHTML = '';
     showUser(i);
     // widgetUser.classList.toggle('users-list__user_remove', true);
     // await timeout(600);
